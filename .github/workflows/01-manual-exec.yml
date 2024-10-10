@@ -14,7 +14,7 @@ jobs:
   #  descrição do job
   e2e-tests:
 
-    runs-on: ['ubuntu-latest']
+    runs-on: ubuntu-latest
 
   # passo a passo das ações do job
     steps:
