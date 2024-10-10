@@ -1,0 +1,39 @@
+# CI de Nível 01 - Disparo manual a partir de 1 clique
+
+# nome que vai aparecer lá nas opções de pipe
+name: 'Execução Manual'
+
+# triggers OU gatilhos de execução manual
+  # ATENÇÃO:::: No Github Actions o gatilho de execução manual chama-se "workflow_dispatch"
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  #  descrição do job
+  runs-on: ['ubuntu-latest']
+
+  # passo a passo das ações do job
+  steps:
+
+    - uses: actions/checkout@v4
+
+    # - uses: actions/setup-node@v4
+    #   with:
+    #     node-version: lts/*
+
+    
+    # simular a instalação das dependencias
+    - name: Instalando Yarn
+      run: npm install -g yarn
+
+    - name: Instalação dependências
+      run: yarn
+
+    - name: Instalando Playwright
+      run: yarn playwright install
+
+    - name: Testes E2E
+      run: yarn run e2e 
+
