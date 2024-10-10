@@ -1,7 +1,7 @@
 # CI de Nível 01 - Disparo manual a partir de 1 clique
 
 # nome que vai aparecer lá nas opções de pipe
-name: 'Execução Manual'
+name: 'Execução Manual 2'
 
 # triggers OU gatilhos de execução manual
   # ATENÇÃO::: No Github Actions o gatilho de execução manual chama-se "workflow_dispatch"
