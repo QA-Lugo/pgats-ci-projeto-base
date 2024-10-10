@@ -4,7 +4,7 @@
 name: 'Execução Manual'
 
 # triggers OU gatilhos de execução manual
-  # ATENÇÃO:::: No Github Actions o gatilho de execução manual chama-se "workflow_dispatch"
+  # ATENÇÃO::: No Github Actions o gatilho de execução manual chama-se "workflow_dispatch"
 
 on:
   workflow_dispatch:
