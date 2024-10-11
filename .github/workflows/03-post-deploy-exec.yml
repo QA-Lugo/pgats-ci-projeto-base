@@ -1,24 +1,17 @@
-# CI de Nível 02 - Disparo automático em períodos definidos
+# CI de Nível 03 - Disparo automático sempre que outro for concluído (por exemplo, deploy)
 
 # nome que vai aparecer lá nas opções de pipe
-name: 'Execução Agendada'
+name: 'Execução por Deploy'
 
-# triggers OU gatilhos de execução agendada
-  # ATENÇÃO::: No Github Actions o gatilho de execução agendada chama-se "schedule"
+# triggers OU gatilhos de execução após outro workflow
+  # ATENÇÃO::: No Github Actions o gatilho de execução após outro workflow chama-se "workflow_run"
 
 on:
-  schedule:
-  # cron POSIX ---> https://crontab.guru/
-  # a -> minuto
-  # b -> hora
-  # c -> dia do mês
-  # d -> meses do ano
-  # e -> dias da semana
-  # Exemplo para rodar toda segunda-feira às 8h da manhã
-  # a b c d e
-  # 0 8 * * 1
-
-    - cron: '0 14 * * 5'
+  workflow_run:
+  # este job irá executar quando o workflow chamado Execução Manual terminar de ser executado e 'completed'
+    workflows: ['Execução Manual']
+    types:
+      - completed
 
 jobs:
 
