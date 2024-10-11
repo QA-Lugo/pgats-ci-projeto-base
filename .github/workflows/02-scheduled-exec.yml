@@ -1,13 +1,24 @@
-# CI de Nível 01 - Disparo manual a partir de 1 clique
+# CI de Nível 02 - Disparo automático em períodos definidos
 
 # nome que vai aparecer lá nas opções de pipe
-name: 'Execução Manual'
+name: 'Execução Agendada'
 
-# triggers OU gatilhos de execução manual
-  # ATENÇÃO::: No Github Actions o gatilho de execução manual chama-se "workflow_dispatch"
+# triggers OU gatilhos de execução agendada
+  # ATENÇÃO::: No Github Actions o gatilho de execução agendada chama-se "schedule"
 
 on:
-  workflow_dispatch:
+  schedule:
+  # cron POSIX ---> https://crontab.guru/
+  # a -> minuto
+  # b -> hora
+  # c -> dia do mês
+  # d -> meses do ano
+  # e -> dias da semana
+  # Exemplo para rodar toda segunda-feira às 8h da manhã
+  # a b c d e
+  # 0 8 * * 1
+
+    - cron: '0 11 * * 5'
 
 jobs:
 
