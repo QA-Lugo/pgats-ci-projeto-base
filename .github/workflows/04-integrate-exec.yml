@@ -9,7 +9,30 @@ name: 'Execução Integrada'
 on:
   workflow_dispatch:
 
+# inspeção
+#   padronização
+# testes ==> :)
+#   unidade
+#   e2e ==> :)
+#     build
+# deploy
+
+
 jobs:
+
+  inspection:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Instalação dependências
+        run: yarn
+
+      - name: Padronizacao de codigo ( Lint )
+        run:  yarn lint
 
   #  descrição do job
   e2e-tests:
