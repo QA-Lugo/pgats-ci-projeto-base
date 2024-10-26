@@ -70,6 +70,9 @@ jobs:
       - name: Instalando Playwright
         run: yarn playwright install
 
+      - name: Subindo o front end da aplicação
+        run: yarn start & # o "&" (e comecial) faz com que a aplicação continue rodando em segundo plano enquanto os testes E2E a seguir, consigam ser executados, pois por padrão, sem o "&", quando a próxima linha do scrip for executada o front iria morrer.
+
       - name: Testes E2E
         run: yarn run e2e
 
