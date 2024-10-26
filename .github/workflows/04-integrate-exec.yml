@@ -85,3 +85,10 @@ jobs:
         with:
           name: relatorio-de-testes
           path: ./playwright-report
+
+  deploy: # aqui não faz nada, porém coloquei pra simular que depois dos testes passando iria fazer o deploy no ambiente de homologação/produção, etc
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: deploy
+        run: echo "step deploy"
