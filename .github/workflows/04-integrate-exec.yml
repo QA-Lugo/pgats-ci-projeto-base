@@ -88,6 +88,7 @@ jobs:
 
   deploy: # aqui não faz nada, porém coloquei pra simular que depois dos testes passando iria fazer o deploy no ambiente de homologação/produção, etc
     runs-on: ubuntu-latest
+    needs: [e2e-tests]
 
     steps:
       - name: deploy
