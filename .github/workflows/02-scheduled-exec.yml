@@ -4,40 +4,36 @@
 name: 'Execução Agendada'
 
 # triggers OU gatilhos de execução agendada
-  # ATENÇÃO::: No Github Actions o gatilho de execução agendada chama-se "schedule"
+# ATENÇÃO::: No Github Actions o gatilho de execução agendada chama-se "schedule"
 
 on:
   schedule:
-  # cron POSIX ---> https://crontab.guru/
-  # a -> minuto
-  # b -> hora
-  # c -> dia do mês
-  # d -> meses do ano
-  # e -> dias da semana
-  # Exemplo para rodar toda segunda-feira às 8h da manhã
-  # a b c d e
-  # 0 8 * * 1
+    # cron POSIX ---> https://crontab.guru/
+    # a -> minuto
+    # b -> hora
+    # c -> dia do mês
+    # d -> meses do ano
+    # e -> dias da semana
+    # Exemplo para rodar toda segunda-feira às 8h da manhã
+    # a b c d e
+    # 0 8 * * 1
 
     - cron: '0 9 * * 5'
 
 jobs:
-
   #  descrição do job
   e2e-tests:
-
     runs-on: ubuntu-latest
 
-  # passo a passo das ações do job
+    # passo a passo das ações do job
     steps:
-
       - uses: actions/checkout@v4
 
-    # - uses: actions/setup-node@v4
-    #   with:
-    #     node-version: lts/*
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: lts/*
 
-    
-    # simular a instalação das dependencias
+      # simular a instalação das dependencias
       - name: Instalando Yarn
         run: npm install -g yarn
 
@@ -55,4 +51,4 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: relatorio-de-testes
-          path: ./playwright-report    
+          path: ./playwright-report

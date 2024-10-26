@@ -4,35 +4,31 @@
 name: 'Execução por Deploy'
 
 # triggers OU gatilhos de execução após outro workflow
-  # ATENÇÃO::: No Github Actions o gatilho de execução após outro workflow chama-se "workflow_run"
+# ATENÇÃO::: No Github Actions o gatilho de execução após outro workflow chama-se "workflow_run"
 
 on:
   workflow_run:
-  # este job irá executar quando o workflow chamado Execução Manual terminar de ser executado e 'completed'
+    # este job irá executar quando o workflow chamado Execução Manual terminar de ser executado e 'completed'
     workflows: ['Execução Manual']
     types:
       - completed
 
 jobs:
-
   #  descrição do job
   e2e-tests:
-
     runs-on: ubuntu-latest
 
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
-  # passo a passo das ações do job
+    # passo a passo das ações do job
     steps:
-
       - uses: actions/checkout@v4
 
-    # - uses: actions/setup-node@v4
-    #   with:
-    #     node-version: lts/*
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: lts/*
 
-    
-    # simular a instalação das dependencias
+      # simular a instalação das dependencias
       - name: Instalando Yarn
         run: npm install -g yarn
 
@@ -50,4 +46,4 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: relatorio-de-testes
-          path: ./playwright-report    
+          path: ./playwright-report

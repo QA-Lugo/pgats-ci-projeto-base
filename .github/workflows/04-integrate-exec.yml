@@ -4,7 +4,7 @@
 name: 'Execução Integrada'
 
 # triggers OU gatilhos de execução manual
-  # ATENÇÃO::: No Github Actions o gatilho de execução manual chama-se "workflow_dispatch"
+# ATENÇÃO::: No Github Actions o gatilho de execução manual chama-se "workflow_dispatch"
 
 on:
   workflow_dispatch:
@@ -17,9 +17,7 @@ on:
 #     build
 # deploy
 
-
 jobs:
-
   inspection:
     runs-on: ubuntu-latest
 
@@ -32,24 +30,21 @@ jobs:
         run: yarn
 
       - name: Padronizacao de codigo ( Lint )
-        run:  yarn lint
+        run: yarn lint
 
   #  descrição do job
   e2e-tests:
-
     runs-on: ubuntu-latest
 
-  # passo a passo das ações do job
+    # passo a passo das ações do job
     steps:
-
       - uses: actions/checkout@v4
 
-    # - uses: actions/setup-node@v4
-    #   with:
-    #     node-version: lts/*
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: lts/*
 
-    
-    # simular a instalação das dependencias
+      # simular a instalação das dependencias
       - name: Instalando Yarn
         run: npm install -g yarn
 
@@ -67,4 +62,4 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: relatorio-de-testes
-          path: ./playwright-report    
+          path: ./playwright-report
