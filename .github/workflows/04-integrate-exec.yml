@@ -18,7 +18,7 @@ on:
 # deploy
 
 jobs:
-  inspection:
+  inspection: # inspeção
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +31,22 @@ jobs:
 
       - name: Padronizacao de codigo ( Lint )
         run: yarn lint
+
+  unit: #   unidade
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Instalação dependências
+        run: yarn
+
+      - name: Testes de unidade
+        run: yarn run test
+
 
   #  descrição do job
   e2e-tests:
