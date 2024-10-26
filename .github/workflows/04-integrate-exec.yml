@@ -1,7 +1,7 @@
 # CI de Nível 04 - Disparo dentro do fluxo de CI de desenvolvimento
 
 # nome que vai aparecer lá nas opções de pipe
-name: "Execução Integrada"
+name: 'Execução Integrada'
 
 # triggers OU gatilhos de execução manual
 # ATENÇÃO::: No Github Actions o gatilho de execução manual chama-se "workflow_dispatch"
@@ -74,6 +74,8 @@ jobs:
 
       - name: Testes E2E
         run: yarn run e2e
+        env:
+          URL: 'http://localhost:3000'
 
       # passed, failed, cancelled
       - uses: actions/upload-artifact@v4
